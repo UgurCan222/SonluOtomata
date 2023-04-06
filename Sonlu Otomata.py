@@ -16,24 +16,30 @@ def contains_cadab(kelime):
     
     # Geçerli durumu başlangıç durumu (0) olarak başlat
     gecerli_durum = 0
+    # Geçerli durumun indeksi
+    gecerli_index = 0
+    # Sonlu otomatın kabul durumunun son indeksi
+    kabul_index = None
     
     # Girdi kelimesindeki her karakter için döngü oluştur
     for harf in kelime:
+        gecerli_index += 1
         # Geçerli karakterle geçerli durumdan bir geçişin olup olmadığını kontrol et
         if (gecerli_durum, harf) in gecisler:
             gecerli_durum = gecisler[(gecerli_durum, harf)]
         else:
             gecerli_durum = 0
+            gecerli_index = 0
         
         # Geçerli durumun kabul durumu olup olmadığını kontrol et
         if gecerli_durum == kabul_durumu:
-            return True
+            kabul_index = gecerli_index - 1
     
-    # Kelimenin sonuna geldiğimizde "cadab" alt dizgisini bulamadıysak False döndür
-    return False
+    # Eğer alt dizi bulunursa, kabul indeksini ve alt dizginin konumunu yazdır
+    if kabul_index is not None:
+        print(f"'{kelime}' kelimesi 'cadab' alt kelimesini içerir, başlangıç indeksi: {kabul_index - 1}")
+    else:
+        print(f"'{kelime}' kelimesi 'cadab' alt kelimesini içermez.")
 
 kelime = "abcadabadccdbabd"
-if contains_cadab(kelime):
-    print(f"'{kelime}' kelimesi 'cadab' alt dizgisini içerir.")
-else:
-    print(f"'{kelime}' kelimesi 'cadab' alt dizgisini içermez.")
+contains_cadab(kelime)
