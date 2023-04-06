@@ -37,7 +37,7 @@ def contains_cadab(kelime):
     
     # Eğer alt dizi bulunursa, kabul indeksini ve alt dizginin konumunu yazdır
     if kabul_index is not None:
-        print(f"'{kelime}' kelimesi 'cadab' alt kelimesini içerir, başlangıç indeksi: {kabul_index - 1}")
+        print(f"'{kelime}' kelimesi 'cadab' alt kelimesini içerir, başlangıç indeksi: {kabul_index - 2}")
     else:
         print(f"'{kelime}' kelimesi 'cadab' alt kelimesini içermez.")
 
