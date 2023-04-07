@@ -11,7 +11,7 @@ def SonluOtomata(text):
     # Başlangıç kapısı (state_index) 0 olarak atanır.
     state_index = 0
 
-    # Geçerli kapı (valid_index) 4 olarak atanır.
+    # Geçerli state (valid_index) 4 olarak atanır.
     valid_index = 4
 
     # Sonuç (result) None olarak atanır.
@@ -22,17 +22,17 @@ def SonluOtomata(text):
 
     # Metindeki her kelime için bir döngü oluşturulur.
     for word in text:
-        # Eğer kapılar sözlüğünde (states) mevcutsa, kapı indeksi güncellenir.
+        # Eğer kapılar sözlüğünde (states) mevcutsa, state indeksi güncellenir.
         if (state_index, word) in states:
             state_index = states[(state_index, word)]
         else:
             state_index = 0
 
-        # Eğer geçerli kapı (valid_index) ulaşılmışsa, sonuç indeksi (index_count) güncellenir.
+        # Eğer geçerli state (valid_index) ulaşılmışsa, sonuç indeksi (index_count) güncellenir.
         if state_index == valid_index:
             result = index_count - 4
 
-        # Eğer kelime, önceki kelimeye eşitse ve önceki kelime "c" ise, kapı indeksi güncellenir.
+        # Eğer kelime, önceki kelimeye eşitse ve önceki kelime "c" ise, state indeksi güncellenir.
         if word == text[index_count - 1] and text[index_count - 1] == "c":
             state_index = 1
 
